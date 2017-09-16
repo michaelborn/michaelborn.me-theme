@@ -1,0 +1,22 @@
+<!-- Header bar -->
+<header id="header" class="header clearfix">
+  <nav class="nav clearfix">
+    <div class="centerWidth">
+        <ul class="links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li class="social"><a href="https://github.com/mborn319" target="_blank"><i class="fa fa-github"></i> <span class="username">mborn319</span></a></li>
+            <li class="social"><a href="https://twitter.com/mborn319" target="_blank"><i class="fa fa-twitter"></i> <span class="username">mborn319<span></a></li>
+        </ul>
+    </div>
+  </nav>
+  <div class="centerWidth clearfix">
+    {# the values in the 'config' object are taken directly from the file app/config/config.yml #}
+      <div class="header__tagline">
+        <h2 class="header__tagline__main"><a href="{{ path('homepage') }}">{{ config.get('general/sitename') }}</a></h2>
+        {% if config.get('general/payoff') %}
+            <p class="header__tagline__sub">{{ config.get('general/payoff') }}</p>
+        {% endif %}
+      </div><!--/.header__tagline-->
+  </div><!--/.centerWidth-->
+</header>

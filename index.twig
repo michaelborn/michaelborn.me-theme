@@ -1,0 +1,38 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+
+  {# For the home page, we show all blog posts.
+    {% if record is defined %}
+
+        <h1>{{ record.title }}</h1>
+
+        {{ record.teaser }}
+
+        {{ popup(record.image, 1200, 500) }}
+
+        {{ record.body }}
+
+        {{ include('partials/_recordfooter.twig', { 'record': record }) }}
+
+    {% endif %}
+
+  #}
+
+  {% setcontent entries = "entries/latest/5" allowpaging %}
+
+  <div class="blog blog--list blog--recent">
+    {% for entry in entries %}
+      <article class="post">
+          <h3><a href="{{ entry.link }}">{{ entry.title }}</a></h3>
+          {% include 'partials/_recordfooter.twig' with { 'record': entry } %}
+          <p class="summary">{{ entry.teaser }}</p>
+          {# <p class="readMoreBtn"><a href="{{ entry.link }}">Read More »</a></p>#}
+      </article>
+    {% endfor %}
+  </div><!--/.blog--list-->
+
+  {# If there are more records than will fit on one page, the pager is shown. #}
+  {{ pager(template = 'partials/_sub_pager.twig') }}
+
+{% endblock main %}
