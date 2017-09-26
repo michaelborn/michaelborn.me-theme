@@ -105,6 +105,36 @@ ul, ol {
   margin-left: 2.2em;
 }
 /*End Reset styles*/
+.pagination {
+    text-align: center;
+    display: block;
+}
+.pagination,
+.pagination li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.pagination a {
+    border-bottom: 1px solid #D13F31;
+    display: block;
+    padding: .3em .7em;
+    line-height: 1;
+    text-decoration: none;
+}
+.pagination .active > a {
+    border-bottom-width: 2px;
+    background: #f7f7f7;
+}
+.pagination li {
+    display: inline-block;
+    vertical-align: middle;
+}
+.pagination a:hover,
+.pagination a:focus {
+    background: #d13f31;
+    color: #fff;
+}
 
 
 /* ====================================
@@ -682,4 +712,4 @@ kbd {
     font-weight: normal;
     font-style: normal;
 
-}
+
