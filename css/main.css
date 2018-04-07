@@ -104,6 +104,19 @@ ul, ol {
   margin: 0;
   margin-left: 2.2em;
 }
+blockquote, q {
+  quotes: none;
+  margin-left: 2em;
+  border-left: 2px solid currentColor;
+  /* padding-left: 1em; */
+  padding: .1em 1em;
+  font-style: italic;
+  font-size: .95em;
+  color: #c93913;
+}
+pre {
+  background-color: #fdf6e3;
+}
 /*End Reset styles*/
 .pagination {
     text-align: center;
