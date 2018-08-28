@@ -11,13 +11,6 @@
     {{ widgets('footer') }}
   </div><!--/.centerWidth-->
 
-  <div class="copyright">
-  <p>
-    <small>
-      &copy; Michael Born 2016-2017.
-      {{ __("<a href='%url%' target='_blank' title='Sophisticated, lightweight & simple CMS'>Built with Bolt</a>.",{'%url%':'http://bolt.cm'}) }}
-    </small>
-  </p>
-  </div>
+  {{ include('partials/_copyright.twig') }}
 
 </footer>

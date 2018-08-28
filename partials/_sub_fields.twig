@@ -25,7 +25,7 @@
         {# Set up the array of fieldnames that should be iterated. We do this by looping
            over _all_ the fields, and skipping those in the 'omittedkeys' array. #}
         {% set omittedkeys = [ 'id', 'slug', 'datecreated', 'datechanged', 'datepublish',
-        'datedepublish', 'username', 'status', 'ownerid', 'templatefields' ] %}
+        'datedepublish', 'username', 'status', 'ownerid', 'templatefields', 'teaser' ] %}
 
         {# Skip over the fields that are used in the slug, unless explicitly told not to,
            using the `skip_uses` parameter. #}

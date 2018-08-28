@@ -1,0 +1,28 @@
+{% if description|default() is not empty %}
+<meta name="description" content="{{ description }}"/>
+{% if keywords|default() is not empty %}
+        <meta name="keywords" content="{{ keywords }}"/>
+{% endif %}
+{% endif %}
+        <meta property="og:locale" content="{{ htmllang()|replace({'-': '_'}) }}" />
+        <meta property="og:type" content="{{ ogtype|default('website') }}" />
+        <meta property="og:title" content="{{ title }}" />
+        <meta name="twitter:title" content="{{ title }}" />
+{% if description|default() is not empty %}
+        <meta property="og:description" content="{{ description }}" />
+        <meta name="twitter:description" content="{{ description }}" />
+{% endif %}
+        <meta property="og:url" content="{{ canonical }}" />
+        <meta name="twitter:url" content="{{ canonical }}" />
+        <meta property="og:site_name" content="{{ app.config.get('general/sitename') }}" />
+{% if image|default() is not empty %}
+        <meta property="og:image" content="{{ image }}" />
+        <meta name="twitter:image" content="{{ image }}" />
+{% endif %}
+        <meta name="robots" content="{{ robots }}" />
+<!-- This site is being optimized with the Bob Bolt SEO Premium Extension™ {{ version }} Platinum Edition Pro. -->
+
+<!-- Extra Twitter fluff -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@mborn319" />
+<meta name="twitter:creator" content="@mborn319" />

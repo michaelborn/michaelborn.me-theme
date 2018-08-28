@@ -26,11 +26,11 @@
       <article class="post">
           <h3><a href="{{ entry.link }}">{{ entry.title }}</a></h3>
           {% include 'partials/_recordfooter.twig' with { 'record': entry } %}
-          <p class="summary">{{ entry.teaser }}</p>
+          <div class="summary">{{ entry.teaser }}</div>
           {# <p class="readMoreBtn"><a href="{{ entry.link }}">Read More »</a></p>#}
       </article>
     {% endfor %}
-  </div><!--/.blog--list-->
+  </div><!--/.blog-list-->
 
   {# If there are more records than will fit on one page, the pager is shown. #}
   {{ pager(template = 'partials/_sub_pager.twig') }}
