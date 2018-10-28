@@ -52,7 +52,6 @@ sub, sup { font-size: 75%; line-height: 0; position: relative; }
 sup { top: -0.5em; }
 sub { bottom: -0.25em; }
 
-pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 15px; }
 textarea { overflow: auto; }
 .ie6 legend, .ie7 legend { margin-left: -7px; }
 input[type="radio"] { vertical-align: text-bottom; }
@@ -113,9 +112,6 @@ blockquote, q {
   font-style: italic;
   font-size: .95em;
   color: #c93913;
-}
-pre {
-  background-color: #fdf6e3;
 }
 /*End Reset styles*/
 .pagination {
@@ -649,25 +645,11 @@ footer .copyright {
 /****************** | Syntax higlighting! | *************************/
 /* syntax highlighting
   inline code blocks styles */
-
-code, kbd {
-    /* monospace font, taller line height */
-    font-family: monospace;
-    line-height: 1.4;
-    /* these colors will get overriden by any highlight.js theme, so that's ok. */
-    background: #fdf6e3;
-    color: #2aa198;
-    /* padding left and right */
-    display: inline-block;
-    padding: 0 5px;
-}
-
-kbd {
-    font-size: 80%;
-    color: #fff;
-    background-color: #333;
-    border-radius: 3px;
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
+pre {
+  margin: 2rem calc(-50vw + 50%);
+  padding: 1rem calc(50vw - 50%);
+  background: #272822;
+  font-size: .9rem;
 }
 
 /****************** | Responsive | *************************/
