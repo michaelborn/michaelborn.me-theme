@@ -22,6 +22,9 @@
         {{ item|current ? ' active' }}">
 
         <a href="{{ item.link }}" title='{{ item.title|default('')|escape }}' class='{{ item.class|default('') }}'>
+            {% if item.icon is defined and item.icon|length %}
+              <span class="fa fa-{{item.icon}}" aria-hidden="true"></span>
+            {% endif %}
             {{- item.label|default('-') -}}
         </a>
 
