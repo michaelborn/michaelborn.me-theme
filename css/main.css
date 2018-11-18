@@ -564,7 +564,6 @@ main .twitter-tweet {
 /*  Footer, obviously. */
 .pageFoot  {
   background: #D13F31;
-  text-align: center;
   color: #fff;
 }
 footer address {
@@ -595,21 +594,23 @@ footer a:hover, footer a:focus {
     text-decoration: underline;
 }
 
-footer .copyright {
-  background: #252525;
-  padding: 3px 0;
-}
-
-.contact .block {
+/* Footer contact form */
+.pageFoot__form .block {
 	margin: 1rem 0;
 }
-.contact label {
+.pageFoot__form label {
 	display: block;
 	padding: .3rem 0;
+
 	font-weight: bold;
 	font-size: 1.2rem;
 }
-.contact input, .contact textarea, .contact select {
+.pageFoot__form .boltform label.required::after {
+  color: inherit;
+}
+.pageFoot__form input,
+.pageFoot__form textarea,
+.pageFoot__form select {
 	background-color: rgba(0, 0, 0, 0.4);
 	border: 0;
 	padding: 1rem;
@@ -618,24 +619,30 @@ footer .copyright {
 	box-sizing: border-box;
 	color: #fff;
 }
-.contact textarea {
+.pageFoot__form textarea {
 	min-height: 120px;
 }
 
-.contact input.btn {
+.pageFoot__form .btn,
+.pageFoot__form .button {
+	background-color: #000;
+  border: 0;
+	color: #fff;
+
 	float: right;
 	width: auto;
-	background-color: #DEDBA7;
-	color: #111;
+
+  padding: .5em .8em;
 }
 
 
-#copyright {
-  background: rgba(0, 0, 0, 0.4);
-  font-size: .8em;
+/* Black copyright bar  */
+footer .copyright {
+  background: #252525;
+  padding: 3px 0;
+  margin-top: 2rem;
+  text-align: center;
 }
-
-
 
 
 .justify {

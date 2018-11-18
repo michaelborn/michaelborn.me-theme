@@ -1,13 +1,18 @@
 <!-- Footer -->
 <footer class="pageFoot">
   <div class="centerWidth">
-     <address>
-      <ul>
-        <li><a href="mailto:mborn319@outlook.com">mborn319@outlook.com</a></li>
-        <li><a href="https://github.com/mborn319" target="_blank"><i class="fa fa-github"></i> mborn319</a></li>
-        <li><a href="https://twitter.com/mborn319" target="_blank"><i class="fa fa-twitter"></i> mborn319</a></li>
-      </ul>
-    </address>
+    
+    <div class="gridcol edges">
+      <div class="pageFoot__form col-8">
+        {{ boltforms('contact') }}
+      </div>
+
+      {% setcontent footer = 'blocks/footer' %}
+      <div class="pageFoot__text col-4">
+        {{ footer.content }}
+      </div>
+    </div><!--/.gridcol-->
+
     {{ widgets('footer') }}
   </div><!--/.centerWidth-->
 
