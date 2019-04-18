@@ -420,7 +420,7 @@ body {
 }
 .nav__grid {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
 }
 .nav__start {
@@ -518,6 +518,10 @@ main {
 main h2 {}
 main p {
 
+}
+main img, main iframe {
+  max-width: 100%;
+  height: auto !important;
 }
 /*main p:first-of-type:first-line {
 	font-weight: bold;
@@ -710,18 +714,19 @@ pre {
 /****************** | Responsive | *************************/
 @media screen and (min-width: 400px) {
 	.centerWidth { width: 380px; }
-
 }
 @media screen and (min-width: 500px) {
 	.centerWidth { width: 480px; }
 }
 @media screen and (min-width: 600px) {
 	.centerWidth { width: 580px; }
-
 }
 @media screen and (min-width: 700px) {
 	.centerWidth { width: 680px; }
 
+  .nav__grid {
+    flex-direction: row;
+   }
   .nav a {
     padding-right: 1.3em;
     padding-left: 1.3em;

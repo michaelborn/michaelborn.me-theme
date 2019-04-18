@@ -1,21 +1,26 @@
+{% setcontent footer = 'blocks/footer' %}
+
 <!-- Footer -->
 <footer class="pageFoot">
   <div class="centerWidth">
     
     <div class="gridcol edges">
-      <div class="pageFoot__form col-8">
+      <div class="pageFoot__form col-12 col-md-8">
         {{ boltforms('contact') }}
       </div>
 
-      {% setcontent footer = 'blocks/footer' %}
-      <div class="pageFoot__text col-4">
-        {{ footer.content }}
+      <div class="pageFoot__text col-12 col-md-4">
+        {% block footer_text %}
+          {{ footer.content }}
+        {% endblock footer_text %}
       </div>
     </div><!--/.gridcol-->
 
     {{ widgets('footer') }}
   </div><!--/.centerWidth-->
 
-  {{ include('partials/_copyright.twig') }}
+  {% block footer_copyright %}
+    {{ include('partials/_copyright.twig') }}
+  {% endblock footer_copyright %}
 
 </footer>
