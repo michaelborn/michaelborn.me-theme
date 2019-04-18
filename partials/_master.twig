@@ -1,3 +1,14 @@
+{#
+  DEFINE VARS AND INCLUDES
+#}
+{% if bodyclass is not defined %}
+  {% set bodyclass='subpage' %}
+{% endif %}
+{% use 'partials/_header.twig' %}
+
+{#
+  BEGIN HTML
+#}
 <!doctype html>
 <html lang="{{ htmllang() }}">
     <head>
@@ -14,12 +25,15 @@
 
         {# Would be nice to have a Bolt CMS way of embedding totally custom meta tags. #}
         <meta name="msvalidate.01" content="9C9A48C5703AE1F20CCFC6A443EA48DB" />
+
+        {% block topincludes %}
+        {% endblock %}
     </head>
-    <body>
+    <body class="{{ bodyclass }}">
 
         {% block body %}
 
-            {{ include('partials/_header.twig') }}
+          {{ block( 'header' ) }}
 
             <main id="main">
               <div class="centerWidth clearfix">

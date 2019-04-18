@@ -1,0 +1,17 @@
+{% block blog_entries %}
+
+  <div class="blog blog--list blog--recent">
+    {% for entry in entries %}
+      <article class="post">
+          <h3><a href="{{ entry.link }}">{{ entry.title }}</a></h3>
+          {% include 'partials/_recordfooter.twig' with { 'record': entry } %}
+          <div class="summary">{{ entry.teaser }}</div>
+          {# <p class="readMoreBtn"><a href="{{ entry.link }}">Read More »</a></p>#}
+      </article>
+    {% endfor %}
+  </div><!--/.blog-list-->
+
+  {# If there are more records than will fit on one page, the pager is shown. #}
+  {{ pager(template = 'partials/_sub_pager.twig') }}
+
+{% endblock %}

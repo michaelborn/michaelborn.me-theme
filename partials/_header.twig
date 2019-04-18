@@ -1,13 +1,6 @@
-<!-- Header bar -->
-<header id="header" class="header clearfix">
-  {{ include( 'partials/_nav.twig' ) }}
-  <div class="centerWidth clearfix">
-    {# the values in the 'config' object are taken directly from the file app/config/config.yml #}
-      <div class="header__tagline">
-        <h2 class="header__tagline__main"><a href="{{ path('homepage') }}">{{ config.get('general/sitename') }}</a></h2>
-        {% if config.get('general/payoff') %}
-            <p class="header__tagline__sub">{{ config.get('general/payoff') }}</p>
-        {% endif %}
-      </div><!--/.header__tagline-->
-  </div><!--/.centerWidth-->
-</header>
+{% block header %}
+    <!-- Header bar -->
+    <header id="header" class="header clearfix">
+    {{ include( 'partials/_nav.twig' ) }}
+    </header>
+{% endblock header %}

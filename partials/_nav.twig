@@ -1,5 +1,13 @@
 <nav class="nav clearfix">
-  <div class="centerWidth">
+  <div class="centerWidth nav__grid">
+    <div class="nav__start">
+      <a href="/" class="nav__brand">MichaelBorn<em>.me</em></a>
+    </div><!--/.nav__start-->
+    <div class="nav__main">
       {{ menu( 'main', 'partials/_sub_menu.twig' ) }}
+    </div><!--/.nav__main-->
+    {#
+      <div class="nav__end"></div><!--/.nav__end-->
+    #}
   </div>
 </nav>

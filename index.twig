@@ -1,38 +1,51 @@
+{# Setup variables to tweak the base HTML #}
+{% set bodyclass = 'home' %}
+
+
+
+{#
+    Pull in content HTML blocks to use
+#}
 {% extends 'partials/_master.twig' %}
 
+
+
+{% use 'partials/_bloglisting.twig' %}
+
+
+
+
+{#
+  OVERRIDE STANDARD HEADER
+  Add the nice "Michael Born" line
+#}
+{% block header %}
+    <!-- Header bar -->
+    <header id="header" class="header clearfix">
+      {{ include( 'partials/_nav.twig' ) }}
+      <div class="centerWidth clearfix">
+        {# the values in the 'config' object are taken directly from the file app/config/config.yml #}
+          <div class="header__tagline">
+            <h2 class="header__tagline__main"><a href="{{ path('homepage') }}">{{ config.get('general/sitename') }}</a></h2>
+            {% if config.get('general/payoff') %}
+                <p class="header__tagline__sub">{{ config.get('general/payoff') }}</p>
+            {% endif %}
+          </div><!--/.header__tagline-->
+      </div><!--/.centerWidth-->
+    </header>
+{% endblock header %}
+
+
+
+
+
+
+{# Override the _master.twig main block #}
 {% block main %}
 
-  {# For the home page, we show all blog posts.
-    {% if record is defined %}
-
-        <h1>{{ record.title }}</h1>
-
-        {{ record.teaser }}
-
-        {{ popup(record.image, 1200, 500) }}
-
-        {{ record.body }}
-
-        {{ include('partials/_recordfooter.twig', { 'record': record }) }}
-
-    {% endif %}
-
-  #}
-
   {% setcontent entries = "entries/latest/5" allowpaging %}
-
-  <div class="blog blog--list blog--recent">
-    {% for entry in entries %}
-      <article class="post">
-          <h3><a href="{{ entry.link }}">{{ entry.title }}</a></h3>
-          {% include 'partials/_recordfooter.twig' with { 'record': entry } %}
-          <div class="summary">{{ entry.teaser }}</div>
-          {# <p class="readMoreBtn"><a href="{{ entry.link }}">Read More »</a></p>#}
-      </article>
-    {% endfor %}
-  </div><!--/.blog-list-->
-
-  {# If there are more records than will fit on one page, the pager is shown. #}
-  {{ pager(template = 'partials/_sub_pager.twig') }}
+  {% with {'entries': entries} %}
+    {{ block('blog_entries') }}
+  {% endwith %}
 
 {% endblock main %}
