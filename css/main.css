@@ -75,7 +75,7 @@ button {  width: auto; overflow: visible; }
 body, select, input, textarea {  color: #444; }
 h1, h2, h3, h4, h5, h6 {
 	padding: 0px;
-	margin: 1em 0em .7em 0em;
+	margin: 1.2em 0em .2em 0em;
 	font-family: "Gidole", sans-serif;
 	line-height: 130%;
 	font-weight: bold;
@@ -87,7 +87,14 @@ h3 { font-size: 1.4em; }
 h4 { font-size: 1.2em; }
 h5 { font-size: 1em; }
 h6 { font-size: .9em; }
-p { font-size: inherit; line-height: 150%; margin: .7em 0; padding: 0; }
+p {
+  font-size: inherit;
+  margin: 0 0 1.2em;
+  padding: 0;
+}
+p, li {
+  line-height: 1.7;
+}
 a {
 	text-decoration: none;
 	color: #A52617;
@@ -371,7 +378,8 @@ blockquote, q {
 
 body, html {
   min-height: 100%;
-  font-size: 17px; }
+  font-size: 18px;
+}
 body {
   font-family: "Gidole", Helvetica, sans-serif;
   font-size: 1.2rem;
@@ -458,6 +466,7 @@ body {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    line-height: 0;
 }
 .nav .links {
     display: flex;
@@ -514,6 +523,8 @@ body {
 main {
 	padding: 4rem 0;
 	text-align: left;
+
+  font-family: "Georgia", sans-serif;
 }
 main h2 {}
 main p {
@@ -533,6 +544,14 @@ main section {
 main a {
 	text-decoration: underline;
 	color: #C93913;
+
+  padding: .15em;
+}
+main a:hover,
+main a:focus {
+  background: #a21d10;
+  text-decoration: none;
+  color: #fff;
 }
 
 
