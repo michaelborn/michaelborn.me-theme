@@ -592,6 +592,11 @@ main .centerWidth {
   text-decoration: none;
   color: inherit;
 }
+.blog .post h3 a:hover,
+.blog .post h3 a:focus {
+  color: #fff;
+}
+
 .blog .post time {
   display: none;
 }
