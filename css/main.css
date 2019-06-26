@@ -719,6 +719,9 @@ footer .copyright {
   margin-top: 2rem;
   text-align: center;
 }
+.copyright p {
+  margin: 1em 0;
+}
 
 
 .justify {
