@@ -617,6 +617,21 @@ main .centerWidth {
   color: #777;
 }
 
+/**
+ * This stupid recaptcha is overflowing the submit button in Chrome!
+ * So that nobody can click the submit button,
+ * unless they hover on the very right side of the button.
+ * :(
+ * I know that this will break the Google ReCaptcha
+ * in certain instances, like "Choose all Street Signs", or something,
+ * but it's a necessary evil / better evil than breaking my form entirely.
+ * 
+ * Note To Self: Delete Google and find a Google ReCaptcha replacement.
+ */
+.ml-form-recaptcha {
+  overflow: hidden;
+}
+
 main .twitter-tweet {
   margin: 1.5em auto !important;
 }

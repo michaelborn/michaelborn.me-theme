@@ -4,7 +4,9 @@
 {% if bodyclass is not defined %}
   {% set bodyclass='subpage' %}
 {% endif %}
+
 {% use 'partials/_header.twig' %}
+{% use 'partials/_newsletter_signup.twig' %}
 
 {#
   BEGIN HTML
@@ -28,6 +30,8 @@
 
         {% block topincludes %}
         {% endblock %}
+
+        {{ block( 'newsletter_head' ) }}
     </head>
     <body class="{{ bodyclass }}">
 

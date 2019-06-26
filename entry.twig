@@ -20,6 +20,8 @@
 
       {% include 'partials/_recordfooter.twig' with { 'record': record, 'extended': true } %}
 
+      {{ block( 'newsletter_form' ) }}
+
   </article>
 </div><!--/blog--details-->
 
