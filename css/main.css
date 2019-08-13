@@ -753,6 +753,12 @@ pre {
   background: #272822;
   font-size: .9rem;
 }
+@media (min-width: 900px) {
+  pre > code {
+    margin-left: -4vw;
+    margin-right: -4vw;
+  }
+}
 
 /* inline <code> blocks within regular body content*/
 p code, li code {
