@@ -20,9 +20,14 @@
 
       {% include 'partials/_recordfooter.twig' with { 'record': record, 'extended': true } %}
 
+{#
       {{ block( 'newsletter_form' ) }}
+      #}
 
   </article>
+  <div class="blog__comments">
+    {{ disqus() }}
+  </div>
 </div><!--/blog--details-->
 
 {% endblock main %}
