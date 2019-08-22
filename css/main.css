@@ -591,6 +591,7 @@ main .centerWidth {
   display: block;
 }
 .blog--list a {
+  font-size: 1em;
   display: inline;
 }
 .blog--list .meta,
@@ -610,6 +611,8 @@ main .centerWidth {
 }
 .blog--list .summary {
   display: none;
+
+  font-size: .95em;
   color: #333;
 }
 .blog--list .summary p:last-of-type {
