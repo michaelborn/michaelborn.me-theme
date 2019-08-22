@@ -5,7 +5,7 @@
       <a href="{{ entry.link }}">
         <article class="post">
             <h3 class="post__title">{{ entry.title }}</h3>
-            <p class="post__meta">- {{ record.datepublish|localedatetime("%B %e, %Y") }}</p>
+            <p class="post__meta">- {{ entry.datepublish|localedatetime("%B %e, %Y") }}</p>
             {# {% include 'partials/_recordfooter.twig' with { 'record': entry } %} #}
             <div class="post__summary">{{ entry.teaser }}</div>
             {# <p class="readMoreBtn"><a href="{{ entry.link }}">Read More »</a></p>#}
