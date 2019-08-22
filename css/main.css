@@ -575,28 +575,55 @@ main .centerWidth {
 /*********** | blog post list styles | ****************/
 
 .blog--list .post {
-	padding: 1rem 0;
-	margin: 2rem 0;
-  border-bottom: 1px solid #D13F31;
+  padding: 1em;
+  margin-bottom: .5em;
+  transform: scale(1);
+  transition: .05s ease-out transform;
 }
-.blog--list .post:last-of-type {
-  border-bottom: 0;
+.blog--list .post:hover,
+.blog--list .post:focus-within {
+  transform: scale(1.05);
+  outline: 2px dashed currentColor;
+  color: #1F7872;
+}
+.blog--list .post:hover .summary,
+.blog--list .post:focus-within .summary {
+  display: block;
+}
+.blog--list a {
+  display: inline;
+}
+.blog--list .meta,
+.blog--list .post__title {
+  display: inline;
+}
+.blog--list a,
+.blog--list a:hover,
+.blog--list a:focus {
+  background: none;
+  text-decoration: none;
+  color: inherit;
+  padding: 0;
 }
 .blog--list .image {
   display: none;
 }
-.blog .post h3 {
-	margin: .5rem 0;
-	font-size: 1.8rem;
-	color: #1F7872;
+.blog--list .summary {
+  display: none;
+  color: #333;
 }
-.blog h3 a {
-  text-decoration: none;
-  color: inherit;
+.blog--list .summary p:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
-.blog .post h3 a:hover,
-.blog .post h3 a:focus {
-  color: #fff;
+.blog--list .meta {
+  padding: 0;
+  margin: 0;
+}
+.blog--list .post__title {
+  font-size: 1.2rem;
+	margin: .2em 0;
+	color: inherit;
 }
 
 .blog .post time {

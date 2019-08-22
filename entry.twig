@@ -4,7 +4,7 @@
 <div class="blog blog--details">
   <article class="details" itemscope itemtype="http://schema.org/LiveBlogPosting">
 
-      <h1 id="{{ record.permalink }}">{{ record.title }}</h1>
+      <h1 id="{{ record.permalink }}" class="post__title">{{ record.title }}</h1>
       <div class="summary" itemprop="description">{{ record.teaser }}</div>
 
       {# Output all fields, in the order as defined in the contenttype.

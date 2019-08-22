@@ -43,7 +43,8 @@
 {# Override the _master.twig main block #}
 {% block main %}
 
-  {% setcontent entries = "entries/latest/5" allowpaging %}
+  <h2>Blog Entries</h2>
+  {% setcontent entries = "entries/latest/20" allowpaging %}
   {% with {'entries': entries} %}
     {{ block('blog_entries') }}
   {% endwith %}

@@ -2,12 +2,14 @@
 
   <div class="blog blog--list blog--recent">
     {% for entry in entries %}
-      <article class="post">
-          <h3><a href="{{ entry.link }}">{{ entry.title }}</a></h3>
-          {% include 'partials/_recordfooter.twig' with { 'record': entry } %}
-          <div class="summary">{{ entry.teaser }}</div>
-          {# <p class="readMoreBtn"><a href="{{ entry.link }}">Read More »</a></p>#}
-      </article>
+      <a href="{{ entry.link }}">
+        <article class="post">
+            <h3 class="post__title">{{ entry.title }}</h3>
+            {% include 'partials/_recordfooter.twig' with { 'record': entry } %}
+            <div class="summary">{{ entry.teaser }}</div>
+            {# <p class="readMoreBtn"><a href="{{ entry.link }}">Read More »</a></p>#}
+        </article>
+      </a>
     {% endfor %}
   </div><!--/.blog-list-->
 
