@@ -87,7 +87,13 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
 }
 
-h1 { font-size: 2em; }
+
+h1 {
+  font-size: calc(1em + 1.5vw);
+}
+@media (min-width: 700px) {
+  h1 { font-size: 2em; }
+}
 h2 { font-size: 1.7em; }
 h3 { font-size: 1.4em; }
 h4 { font-size: 1.2em; }
@@ -496,6 +502,15 @@ body {
   display: none;
 }
 
+@media (max-width: 500px) {
+  .header .centerWidth {
+    width: 100%;
+  }
+  .nav__main a {
+    padding: .5em;
+  }
+}
+
 /*  tagline shows over banner */
 .header__tagline {
   text-shadow: 2px 2px 2px black;
@@ -586,15 +601,17 @@ main .centerWidth {
   outline: 2px dashed currentColor;
   color: #1F7872;
 }
-.blog--list .post:hover .summary,
-.blog--list .post:focus-within .summary {
-  display: block;
+@media (any-pointer: fine) {
+  .blog--list .post:hover .post__summary,
+  .blog--list .post:focus-within .post__summary {
+    display: block;
+  }
 }
 .blog--list a {
   font-size: 1em;
   display: inline;
 }
-.blog--list .meta,
+.blog--list .post__meta,
 .blog--list .post__title {
   display: inline;
 }
@@ -609,17 +626,17 @@ main .centerWidth {
 .blog--list .image {
   display: none;
 }
-.blog--list .summary {
+.blog--list .post__summary {
   display: none;
 
   font-size: .95em;
   color: #333;
 }
-.blog--list .summary p:last-of-type {
+.post__summary p:last-of-type {
   margin-bottom: 0;
   padding-bottom: 0;
 }
-.blog--list .meta {
+.blog--list .post__meta{
   padding: 0;
   margin: 0;
 }
@@ -634,11 +651,14 @@ main .centerWidth {
 }
 
 /*  blog page - individual articles */
-.blog--details .summary {
+.blog--details .post__summary {
     color: #888;
     border-bottom: 1px dashed #999;
     padding-bottom: 1em;
     margin-bottom: 2em;
+}
+.post__summary p {
+  line-height: 1.4;
 }
 .blog--details h1:first-of-type {
   margin-top: 0;
