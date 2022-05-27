@@ -13,7 +13,7 @@
    invokes itself to insert the items of the submenus. #}
 {% macro display_menu_item(item, loop, extraclass, withsubmenus) %}
     {% from _self import display_menu_item %}
-    {% spaceless %}
+    {% apply spaceless %} 
     <li class="index-{{ loop.index -}}
         {{ item.path|default('') == 'homepage' ? ' menu-text' -}}
         {{ loop.first ? ' first' -}}
@@ -36,7 +36,7 @@
             </ul>
         {% endif %}
     </li>
-    {% endspaceless %}
+    {% endapply %} 
 {% endmacro %}
 
 {# Make the macro available for use #}

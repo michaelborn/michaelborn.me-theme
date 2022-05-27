@@ -32,7 +32,7 @@
                 <h2><a href="{{ record.link }}">{{ record.title }}</a></h2>
 
                 {% if record.image!="" %}
-                    <a href="{{ image(record.image) }}">
+                    <a href="{{ showimage(record.image) }}">
                         <img src="{{ thumbnail(record.image, 400, 260) }}">
                     </a>
                 {% endif %}

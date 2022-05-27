@@ -11,7 +11,7 @@
     }) }}
 #}
 {# Instead show just normal date/time #}
-{{ record.datepublish|localedatetime("%B %e, %Y") }}
+{{ record.datepublish|date("M d, Y") }}
 </p>
 
 {% if extended|default() %}

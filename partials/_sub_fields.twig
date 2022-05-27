@@ -21,7 +21,7 @@
 
 {% block sub_fields %}
     {# SECTION 1: INITIALIZATION #}
-    {%- spaceless %}
+    {% apply spaceless %} 
         {# Set up the array of fieldnames that should be iterated. We do this by looping
            over _all_ the fields, and skipping those in the 'omittedkeys' array. #}
         {% set omittedkeys = [ 'id', 'slug', 'datecreated', 'datechanged', 'datepublish',
@@ -37,59 +37,60 @@
         {% if exclude|default is iterable %}
             {% set omittedkeys = omittedkeys|merge(exclude) %}
         {% endif %}
-    {% endspaceless -%}
+    {% endapply %} 
 
     {# SECTION 2: LOOPING AND ITERATION - The actual looping is done here. #}
-    {% for key, value in record.values if (key not in omittedkeys) %}
+    {% for key, value in record.values %}
+        {% if key not in omittedkeys %}
+            {# Is the field allowed to contain Twig functions #}
+            {% set allowtwig = record.contenttype.fields[key].allowtwig|default(false) %}
 
-        {# Is the field allowed to contain Twig functions #}
-        {% set allowtwig = record.contenttype.fields[key].allowtwig|default(false) %}
+            {# Fields that are considered 'common': 'html', 'markdown', 'textarea',
+            'text', 'image', 'video' and 'imagelist' #}
+            {% if common|default(true) and (key not in exclude|default([])) %}
 
-        {# Fields that are considered 'common': 'html', 'markdown', 'textarea',
-           'text', 'image', 'video' and 'imagelist' #}
-        {% if common|default(true) and (key not in exclude|default([])) %}
+                {% set fieldtype = record.fieldtype(key) %}
+                {% set value = record.get(key) %}
+                {{ block('common_fields') }}
 
-            {% set fieldtype = record.fieldtype(key) %}
-            {% set value = record.get(key) %}
-            {{ block('common_fields') }}
+            {% endif %}
 
-        {% endif %}
+            {# The rest of the built-in fieldtypes #}
+            {% if extended|default(false) and (key not in exclude|default([])) %}
 
-        {# The rest of the built-in fieldtypes #}
-        {% if extended|default(false) and (key not in exclude|default([])) %}
+                {% set fieldtype = record.fieldtype(key) %}
+                {{ block('extended_fields') }}
 
-            {% set fieldtype = record.fieldtype(key) %}
-            {{ block('extended_fields') }}
+            {% endif %}
 
-        {% endif %}
+            {# Finally, the repeaters #}
+            {% if repeaters|default(false) == true and record.fieldtype(key) == "repeater" %}
 
-        {# Finally, the repeaters #}
-        {% if repeaters|default(false) == true and record.fieldtype(key) == "repeater" %}
+                {% if (global.request.get('_route') != "preview") %}
 
-            {% if (global.request.get('_route') != "preview") %}
+                    {% for repeater in value %}
 
-                {% for repeater in value %}
+                        {% for key, repeaterfield in repeater %}
 
-                    {% for key, repeaterfield in repeater %}
+                            {% set fieldtype = repeaterfield.fieldtype() %}
+                            {% set value = repeaterfield.value() %}
+                            {{ block('common_fields') }}
+                            {{ block('extended_fields') }}
 
-                        {% set fieldtype = repeaterfield.fieldtype() %}
-                        {% set value = repeaterfield.value() %}
-                        {{ block('common_fields') }}
-                        {{ block('extended_fields') }}
-
+                        {% endfor %}
                     {% endfor %}
-                {% endfor %}
 
-            {% else %}
-                {# @deprecated
-                `blocks()` does not work correctly when _previewing_ repeater fields. This will be
-                fixed properly for Bolt 4, but for now we just output a notice, and prevent crashes.
-                See also: https://github.com/bolt/bolt/issues/6605 #}
-                <p>
-                Unfortunately, Repeater fields do not work correctly with the generic
-                <code>block()</code> function, when using Preview. To view these fields, please
-                save the record, and view the page normally.
-                </p>
+                {% else %}
+                    {# @deprecated
+                    `blocks()` does not work correctly when _previewing_ repeater fields. This will be
+                    fixed properly for Bolt 4, but for now we just output a notice, and prevent crashes.
+                    See also: https://github.com/bolt/bolt/issues/6605 #}
+                    <p>
+                    Unfortunately, Repeater fields do not work correctly with the generic
+                    <code>block()</code> function, when using Preview. To view these fields, please
+                    save the record, and view the page normally.
+                    </p>
+                {% endif %}
             {% endif %}
         {% endif %}
 
@@ -103,12 +104,13 @@
            contenttype for the templatefields should know about the types of fields. #}
         {% set templatefields_field_types = attribute(record.contenttype.templatefields|first, 'fields') %}
 
-        {% for key, value in templatefields if (key not in omittedkeys) %}
+        {% for key, value in templatefields %}
+            {% if key not in omittedkeys %}
 
-            {% set fieldtype = attribute(attribute(templatefields_field_types, key), 'type')  %}
-            {{ block('common_fields') }}
-            {{ block('extended_fields') }}
-
+                {% set fieldtype = attribute(attribute(templatefields_field_types, key), 'type')  %}
+                {{ block('common_fields') }}
+                {{ block('extended_fields') }}
+            {% endif %}
         {% endfor %}
 
     {% endif %}
