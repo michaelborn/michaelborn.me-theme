@@ -12,6 +12,6 @@
   </div><!--/.blog-list-->
 
   {# If there are more records than will fit on one page, the pager is shown. #}
-  {{ pager(template = 'partials/_sub_pager.twig') }}
+  {{ pager(entries, 'helpers/_pager_basic.html.twig', 'pager', 10) }}
 
 {% endblock %}

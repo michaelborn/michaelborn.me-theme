@@ -14,7 +14,7 @@
 {% endif %}
         <meta property="og:url" content="{{ canonical }}" />
         <meta name="twitter:url" content="{{ canonical }}" />
-        <meta property="og:site_name" content="{{ app.config.get('general/sitename') }}" />
+        <meta property="og:site_name" content="{{ config.get('general/sitename') }}" />
 {% if image|default() is not empty %}
         <meta property="og:image" content="{{ image }}" />
         <meta name="twitter:image" content="{{ image }}" />
