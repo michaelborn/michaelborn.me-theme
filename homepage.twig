@@ -9,7 +9,6 @@
 {% extends 'partials/_master.twig' %}
 
 
-
 {% use 'partials/_bloglisting.twig' %}
 
 
@@ -21,9 +20,9 @@
 #}
 {% block header %}
     <!-- Header bar -->
-    <header id="header" class="header clearfix">
+    <header id="header" class="clearfix header">
       {{ include( 'partials/_nav.twig' ) }}
-      <div class="centerWidth clearfix">
+      <div class="clearfix centerWidth">
         {# the values in the 'config' object are taken directly from the file app/config/config.yml #}
           <div class="header__tagline">
             <h2 class="header__tagline__main"><a href="{{ path('homepage') }}">{{ config.get('general/sitename') }}</a></h2>
@@ -36,15 +35,15 @@
 {% endblock header %}
 
 
-
-
-
-
 {# Override the _master.twig main block #}
 {% block main %}
+  {% dump('hi!')%}
 
-  {% setcontent entries = "entries/latest/5" allowpaging %}
-  {% with {'entries': entries} %}
+  {% setcontent records = "entries/latest/5" %}
+
+  {% dump( records ) %}
+
+  {% with {'entries': records} %}
     {{ block('blog_entries') }}
   {% endwith %}
 

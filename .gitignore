@@ -4,3 +4,10 @@
 
 # Stupid macs, just in case
 .DS_Store
+
+# dependencies
+vendor
+node_modules
+
+# compiled assets
+dist

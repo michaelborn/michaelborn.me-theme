@@ -21,14 +21,19 @@
         <title>
             {{ seo.title() }}
         </title>
-        <link rel="stylesheet" href="{{ asset('css/main.css', 'theme') }}">
 
         {{ seo.metatags() }}
 
         {# Would be nice to have a Bolt CMS way of embedding totally custom meta tags. #}
         <meta name="msvalidate.01" content="9C9A48C5703AE1F20CCFC6A443EA48DB" />
 
-        {% block topincludes %}
+        {# Prefetch the DNS for the hcaptcha assets #}
+        <link rel="dns-prefetch" href="https://hcaptcha.com/" crossorigin>
+        <link rel="dns-prefetch" href="https://newassets.hcaptcha.com/" crossorigin>
+
+        {% block stylesheets %}
+            {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+            {{ encore_entry_link_tags( 'app', null, 'frontend' ) }}
         {% endblock %}
 
         {{ block( 'newsletter_head' ) }}
@@ -40,12 +45,11 @@
           {{ block( 'header' ) }}
 
             <main id="main">
-              <div class="centerWidth clearfix">
+              <div class="clearfix centerWidth">
 
                 {{ widgets('main_top') }}
 
-                  {% block main %}
-                  {% endblock main %}
+                  {% block main %}{% endblock main %}
 
                 {{ widgets('main_bottom') }}
 
@@ -57,6 +61,10 @@
         {% endblock body %}
 
         {{ include('partials/_footer.twig') }}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags( 'app', null, 'frontend' ) }}
+        {% endblock %}
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js" async defer></script>
